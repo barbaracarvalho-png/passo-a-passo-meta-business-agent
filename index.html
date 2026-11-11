@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Como configurar o Meta Business Agent no WhatsApp Business · Bold Workspace</title>
+<meta name="description" content="Passo a passo gratuito e personalizável para configurar, ensinar e ativar o agente de IA do WhatsApp Business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#005DD4;        /* azul principal Bold Workspace */
+  --blue-deep:#0052B9;   /* azul de fundo dos cards escuros */
+  --blue-ink:#0047A3;
+  --green:#08F36C;       /* verde de destaque */
+  --green-2:#05EE9D;
+  --navy:#0A1B3F;        /* texto principal */
+  --muted:#5B6B85;
+  --bg:#EEF3FB;
+  --tint:#E8EFFB;        /* pílulas e fundos claros */
+  --tint-2:#D5E3FA;
+  --line:#DCE6F5;
+  --white:#FFFFFF;
+  --radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{letter-spacing:-.025em;line-height:1.1;margin:0}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.hidden{display:none!important}
+
+/* ---------- marca ---------- */
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:36px;height:36px;border-radius:10px;background:var(--blue);display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:8px}
+.brand-mark i{border-radius:3px;background:#fff}
+.brand-mark i:last-child{background:var(--green)}
+.brand-name{font-weight:800;font-size:17px;letter-spacing:-.02em;color:var(--navy);line-height:1}
+.brand-name span{color:var(--blue)}
+.brand-tag{font-size:11px;color:var(--muted);font-weight:500;margin-top:3px}
+@media(max-width:560px){.brand-tag{display:none!important}#topCta{padding:10px 14px;font-size:13px}}
+
+/* ---------- header ---------- */
+header.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top-mid{display:none;font-size:13px;font-weight:600;color:var(--blue);align-items:center;gap:8px}
+@media(min-width:820px){.top-mid{display:flex}}
+
+/* ---------- botões ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s,box-shadow .15s;padding:12px 18px;font-size:14px}
+.btn:active{transform:translateY(1px)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-ink)}
+.btn-green{background:var(--green);color:var(--navy)}
+.btn-green:hover{background:#00E061}
+.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn-lg{padding:15px 22px;font-size:15px}
+.btn[disabled]{opacity:.6;cursor:default}
+
+/* ---------- elementos da identidade ---------- */
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;background:var(--tint);color:var(--blue);border-radius:6px;padding:5px 9px}
+.pill-dark{background:rgba(255,255,255,.14);color:#fff}
+.hl{color:var(--blue)}
+.hl-green{color:var(--green)}
+.bar{display:block;width:44px;height:4px;border-radius:4px;background:var(--green)}
+.dots{position:absolute;width:76px;height:44px;background-image:radial-gradient(var(--tint-2) 1.6px,transparent 1.6px);background-size:12px 12px}
+.tiles{position:absolute;top:22px;right:22px;display:grid;grid-template-columns:repeat(2,44px);gap:10px;pointer-events:none}
+.tiles i{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1)}
+.tiles i.g{background:linear-gradient(135deg,var(--green),var(--green-2))}
+.tiles.light i{background:var(--tint)}
+.tiles.light i.b{background:var(--blue)}
+.ico{width:38px;height:38px;border-radius:10px;background:var(--blue);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.ico svg{width:20px;height:20px;color:#fff;stroke:#fff}
+.ck{width:20px;height:20px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex-shrink:0}
+.ck svg{width:12px;height:12px;stroke:var(--navy)}
+
+/* ---------- cards ---------- */
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,82,185,.06)}
+.card-blue{background:linear-gradient(160deg,var(--blue) 0%,var(--blue-deep) 100%);color:#fff;border-radius:var(--radius);position:relative;overflow:hidden}
+
+/* ---------- hero ---------- */
+.hero{margin-top:22px;padding:34px 24px 28px;position:relative;overflow:hidden}
+@media(min-width:720px){.hero{padding:52px 48px 44px}}
+.hero h1{font-size:32px;font-weight:800;margin-top:16px;max-width:760px}
+@media(min-width:720px){.hero h1{font-size:50px}}
+.hero .sub{margin-top:14px;font-size:16px;color:rgba(255,255,255,.86);max-width:620px}
+@media(min-width:720px){.hero .sub{font-size:18px}}
+.hero-meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px}
+.hero-grid{margin-top:28px;display:grid;gap:12px}
+@media(min-width:720px){.hero-grid{grid-template-columns:repeat(3,1fr)}}
+.hero-grid .hcard{background:#fff;color:var(--navy);border-radius:14px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.hcard strong{display:block;font-size:14px}
+.hcard span{font-size:13px;color:var(--muted)}
+.hero .tiles{display:none}
+@media(min-width:900px){.hero .tiles{display:grid}}
+
+/* ---------- gate ---------- */
+.gate{margin-top:22px;display:grid;gap:18px;align-items:start}
+@media(min-width:960px){.gate{grid-template-columns:1.15fr .85fr}}
+.gate .card{padding:24px;position:relative}
+@media(min-width:720px){.gate .card{padding:32px}}
+.section-title{font-size:24px;font-weight:800;margin-top:10px}
+.lead-text{color:var(--muted);font-size:14px;margin-top:6px}
+.form{margin-top:20px;display:grid;gap:14px}
+@media(min-width:640px){.form{grid-template-columns:1fr 1fr}.span2{grid-column:span 2}}
+label.f span{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.input{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;font-size:15px;outline:none;transition:border .15s,box-shadow .15s}
+.input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,93,212,.12)}
+.input::placeholder{color:#9AA8BE}
+textarea.input{resize:vertical;min-height:90px}
+.note{font-size:12.5px;color:var(--muted)}
+.alert{font-size:13.5px;font-weight:600;border-radius:12px;padding:12px 14px}
+.alert-err{background:#FFF0F0;color:#B42318}
+.alert-ok{background:#E7FBEF;color:#0B6B37}
+.aside{padding:26px}
+.aside h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:700}
+.aside ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:14px}
+.aside li{display:flex;gap:10px;font-size:14.5px;line-height:1.45}
+
+/* ---------- progresso ---------- */
+.progress{position:sticky;top:76px;z-index:30;margin-top:22px;padding:16px 20px}
+.progress-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.progress small{font-size:11px;letter-spacing:.12em;font-weight:700;color:var(--muted);text-transform:uppercase}
+.progress b{display:block;font-size:17px}
+.track{height:10px;background:var(--tint);border-radius:999px;margin-top:12px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:999px;transition:width .5s}
+.saved{font-size:12.5px;font-weight:600;color:#0B6B37;display:flex;align-items:center;gap:6px}
+
+/* ---------- personalização ---------- */
+.block{margin-top:22px;padding:24px;position:relative}
+@media(min-width:720px){.block{padding:32px}}
+.block-head{display:flex;gap:12px;align-items:center}
+.block-head h2{font-size:23px;font-weight:800}
+.grid2{margin-top:20px;display:grid;gap:14px}
+@media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}}
+.summary{margin-top:20px;background:var(--tint);border-radius:14px;padding:18px}
+.summary p.t{font-weight:700;font-size:14px}
+.summary p.d{font-size:14px;margin-top:8px;color:#26385C}
+
+/* ---------- passos ---------- */
+.steps-head{margin-top:40px}
+.steps-head h2{font-size:30px;font-weight:800}
+.steps{margin-top:18px;display:grid;gap:18px}
+.step{padding:22px;overflow:hidden}
+@media(min-width:720px){.step{padding:28px}}
+.step-top{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start}
+.step-id{display:flex;gap:14px}
+.num{width:46px;height:46px;border-radius:12px;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px;flex-shrink:0}
+.step.done .num{background:var(--green);color:var(--navy)}
+.step h3{font-size:20px;font-weight:800;margin-top:6px}
+.step .desc{font-size:14px;color:var(--muted);margin-top:4px}
+.done-toggle{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-size:13.5px;font-weight:700;background:var(--tint);color:var(--muted);cursor:pointer;user-select:none;border:1px solid transparent}
+.done-toggle input{width:16px;height:16px;accent-color:var(--blue)}
+.step.done .done-toggle{background:#E7FBEF;color:#0B6B37;border-color:#B7F5D0}
+.step-body{margin-top:20px;display:grid;gap:16px}
+@media(min-width:820px){.step-body{grid-template-columns:1fr 1fr}}
+.todo{background:var(--bg);border-radius:14px;padding:18px}
+.todo-h{font-weight:700;font-size:14px;display:flex;gap:8px;align-items:center;color:var(--navy)}
+.todo-h svg{width:18px;height:18px;color:var(--blue)}
+.todo p{font-size:14px;margin-top:10px}
+.opt{display:flex;gap:10px;align-items:flex-start;font-size:14px;background:#fff;border:1px solid transparent;border-radius:12px;padding:11px 12px;cursor:pointer;margin-top:8px}
+.opt input{margin-top:3px;accent-color:var(--blue);width:16px;height:16px;flex-shrink:0}
+.opt.sel{border-color:var(--blue);background:#F3F8FF}
+.warn{font-size:13.5px;background:#FFF7E6;color:#8A5300;border-radius:12px;padding:12px;margin-top:10px}
+.tip{margin-top:12px;display:flex;gap:10px;background:#E7FBEF;color:#0B4D2A;border-radius:12px;padding:12px;font-size:13.5px}
+.tip svg{width:18px;height:18px;flex-shrink:0;margin-top:1px}
+.texts{margin-top:18px;display:grid;gap:14px}
+@media(min-width:900px){.texts{grid-template-columns:repeat(3,1fr)}}
+.tbox{border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column}
+.tbox-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tbox-h b{font-size:14px}
+.tbox textarea{margin-top:10px;flex:1;min-height:190px;font-size:13px;line-height:1.5;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;resize:vertical}
+.copy{font-size:12.5px;padding:7px 11px;border-radius:9px}
+.reco{margin-top:16px;font-size:14px;background:#F3F8FF;border:1px solid var(--tint-2);border-radius:12px;padding:14px;color:#14306A}
+
+/* ---------- plano final ---------- */
+.final{margin-top:36px;padding:30px 24px}
+@media(min-width:720px){.final{padding:44px 48px}}
+.final h2{font-size:28px;font-weight:800;margin-top:14px;max-width:640px}
+.final .sub{margin-top:10px;color:rgba(255,255,255,.86);max-width:620px}
+.final-chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.final-box{margin-top:20px;background:#fff;color:var(--navy);border-radius:14px;padding:18px;font-size:14px;white-space:pre-line}
+.final .tiles{display:none}
+@media(min-width:900px){.final .tiles{display:grid}}
+
+/* ---------- quiz ---------- */
+.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:4px}
+.quiz-count{font-size:12.5px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.quiz-back{background:none;border:0;color:var(--blue);font-weight:700;font-size:13px;cursor:pointer;padding:6px 0}
+.quiz-back[disabled]{visibility:hidden}
+.quiz-track{height:6px;background:var(--tint);border-radius:99px;margin-top:10px;overflow:hidden}
+.quiz-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:99px;transition:width .35s}
+.quiz-q{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-top:18px}
+.quiz-help{font-size:13.5px;color:var(--muted);margin-top:6px}
+.quiz-opts{margin-top:18px;display:grid;gap:10px}
+@media(min-width:640px){.quiz-opts.two{grid-template-columns:1fr 1fr}}
+.quiz-opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font-size:15px;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+.quiz-opt:hover{border-color:var(--blue);background:#F6F9FF}
+.quiz-opt:active{transform:scale(.99)}
+.quiz-opt.sel{border-color:var(--blue);background:#EEF4FF}
+.quiz-opt .k{width:28px;height:28px;border-radius:8px;background:var(--tint);color:var(--blue);display:grid;place-items:center;font-size:12.5px;font-weight:800;flex-shrink:0}
+.quiz-opt.sel .k{background:var(--blue);color:#fff}
+.quiz-pane{animation:qin .28s ease}
+@keyframes qin{from{opacity:.001;transform:translateX(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.quiz-pane{animation:none}.quiz-fill{transition:none}}
+.result-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:8px;padding:6px 10px}
+.result-a{background:#E7FBEF;color:#0B6B37}
+.result-b{background:#EEF4FF;color:var(--blue)}
+.result-c{background:#0A1B3F;color:#fff}
+.result-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.result-list li{display:flex;gap:10px;font-size:14px}
+.check-line{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);cursor:pointer}
+.check-line input{margin-top:3px;width:16px;height:16px;accent-color:var(--blue);flex-shrink:0}
+
+footer{margin-top:44px;border-top:1px solid var(--line);padding:26px 0 40px}
+footer .wrap{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+footer .note{max-width:560px}
+
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;font-size:13.5px;font-weight:600;padding:11px 16px;border-radius:12px;opacity:0;transition:.25s;z-index:60;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media print{header.top,.progress,.btn,.done-toggle{display:none!important}}
+</style>
+</head>
+<body>
+
+<!-- SVG sprites -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-test" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  <symbol id="i-idea" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="Bold Workspace">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span><span class="brand-name">bold <span>workspace</span></span><span class="brand-tag" style="display:block">Sistema operacional para negócios</span></span>
+    </a>
+    <div class="top-mid"><span class="ck"><svg><use href="#i-check"/></svg></span> Guia interativo gratuito</div>
+    <a href="#liberar" class="btn btn-blue" id="topCta">Liberar o guia</a>
+  </div>
+</header>
+
+<main class="wrap" id="topo">
+
+  <!-- HERO -->
+  <section class="card-blue hero">
+    <div class="tiles" aria-hidden="true"><i></i><i class="g"></i><i></i><i></i></div>
+    <span class="pill pill-dark">Guia prático · WhatsApp Business</span>
+    <h1>Como configurar o <span class="hl-green">Meta Business Agent</span> no WhatsApp Business</h1>
+    <p class="sub">Passo a passo personalizável para configurar, ensinar e ativar o seu agente de IA sem travar.</p>
+    <div class="hero-meta">
+      <span class="chip"><svg width="15" height="15"><use href="#i-clock"/></svg> Leva cerca de 20 min</span>
+      <span class="chip"><svg width="15" height="15"><use href="#i-check"/></svg> 100% gratuito</span>
+    </div>
+    <div class="hero-grid">
+      <div class="hcard"><span class="ico"><svg><use href="#i-bolt"/></svg></span><div><strong>Configure do zero</strong><span>Sem conhecimento técnico</span></div></div>
+      <div class="hcard"><span class="ico"><svg><use href="#i-db"/></svg></span><div><strong>Ensine com seus dados</strong><span>Textos prontos para colar</span></div></div>
+      <div class="hcard"><span class="ico"><svg><use href="#i-test"/></svg></span><div><strong>Teste antes de ativar</strong><span>Roteiro e rotina semanal</span></div></div>
+    </div>
+  </section>
+
+  <!-- GATE -->
+  <section class="gate" id="liberar">
+    <div class="card">
+      <div class="dots" style="top:24px;right:24px" aria-hidden="true"></div>
+
+      <div id="gateForm">
+        <span class="pill">Acesso ao guia</span>
+        <h2 class="section-title">Preencha para liberar o <span class="hl">guia completo</span></h2>
+        <p class="lead-text">Leva 1 minuto: seus dados e 7 perguntas rápidas sobre o seu atendimento. No fim você recebe o guia e uma leitura do que o agente gratuito resolve na sua operação.</p>
+        <form class="form" id="leadForm" novalidate>
+          <label class="f"><span>Nome *</span><input class="input" name="nome" autocomplete="given-name" placeholder="Seu nome" required></label>
+          <label class="f"><span>Sobrenome *</span><input class="input" name="sobrenome" autocomplete="family-name" placeholder="Seu sobrenome" required></label>
+          <label class="f span2"><span>E-mail *</span><input class="input" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br" required></label>
+          <label class="f"><span>WhatsApp *</span><input class="input" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required></label>
+          <label class="f"><span>Empresa *</span><input class="input" name="empresa" autocomplete="organization" placeholder="Nome da empresa" required></label>
+          <label class="check-line span2"><input type="checkbox" name="newsletter" value="sim"> Quero receber a newsletter da Bold a cada 15 dias. Dá para cancelar quando quiser.</label>
+          <p class="note span2">Seus dados são usados para liberar e personalizar este guia. <a href="#" id="privacyLink" style="color:var(--blue);font-weight:600">Política de privacidade</a>.</p>
+          <p class="alert alert-err span2 hidden" id="formError" role="alert"></p>
+          <button class="btn btn-blue btn-lg span2" id="gateBtn" type="submit">Continuar <svg width="18" height="18"><use href="#i-arrow"/></svg></button>
+        </form>
+      </div>
+
+      <div id="gateQuiz" class="hidden" aria-live="polite">
+        <span class="pill">Último passo</span>
+        <div class="quiz-top">
+          <span class="quiz-count" id="quizCount">Pergunta 1 de 7</span>
+          <button class="quiz-back" id="quizBack" type="button">← Voltar</button>
+        </div>
+        <div class="quiz-track"><div class="quiz-fill" id="quizFill"></div></div>
+        <div id="quizPane"></div>
+      </div>
+
+      <div id="gateDone" class="hidden">
+        <div id="resultBox"></div>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px" id="resultActions"></div>
+        <button class="quiz-back" id="editLead" type="button" style="margin-top:12px">Editar meus dados</button>
+      </div>
+    </div>
+
+    <aside class="card-blue aside">
+      <h3>O que você vai aprender</h3>
+      <ul>
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>Ativar o agente com segurança</li>
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>Ensinar o agente com os dados reais da sua empresa</li>
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>Escolher quando ele responde e quando só observa</li>
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>Testar, pausar, retomar e melhorar toda semana</li>
+      </ul>
+      <span class="bar" style="margin-top:22px"></span>
+    </aside>
+  </section>
+
+  <div id="unlocked" class="hidden">
+
+    <!-- PROGRESSO -->
+    <section class="card progress">
+      <div class="progress-row">
+        <div><small>Seu progresso</small><b id="progressText">0 de 8 passos concluídos · 0%</b></div>
+        <span class="saved" id="savedBadge"><svg width="14" height="14"><use href="#i-check"/></svg> Salvo neste navegador</span>
+      </div>
+      <div class="track"><div class="fill" id="progressFill"></div></div>
+    </section>
+
+    <!-- PERSONALIZAÇÃO -->
+    <section class="card block" id="personalizacao">
+      <div class="dots" style="top:28px;right:28px" aria-hidden="true"></div>
+      <div class="block-head"><span class="ico"><svg><use href="#i-spark"/></svg></span><div><span class="pill">Personalização</span><h2 style="margin-top:6px">Personalize o seu guia</h2></div></div>
+      <p class="lead-text" style="margin-top:10px">Preencha com os dados da sua empresa e aplique. Os passos e os textos do Passo 3 passam a usar essas informações.</p>
+      <div class="grid2" id="persoForm">
+        <label class="f"><span>Nome da empresa</span><input class="input" data-p="empresa"></label>
+        <label class="f"><span>Segmento</span><select class="input" data-p="segmento"></select></label>
+        <label class="f span2" style="grid-column:1/-1"><span>Principais produtos ou serviços</span><textarea class="input" rows="3" data-p="produtos"></textarea></label>
+        <label class="f"><span>Horário de atendimento</span><input class="input" data-p="horario"></label>
+        <label class="f"><span>Cidade / UF</span><input class="input" data-p="cidade"></label>
+        <label class="f"><span>Link do catálogo ou site</span><input class="input" data-p="link" placeholder="https://..."></label>
+        <label class="f"><span>Tom de voz</span><select class="input" data-p="tom"></select></label>
+      </div>
+      <button class="btn btn-green btn-lg" id="applyPerso" type="button" style="margin-top:20px">Aplicar personalização</button>
+      <div class="summary">
+        <p class="t">Resumo personalizado · <span data-bind="empresa"></span></p>
+        <p class="d" id="summaryText"></p>
+      </div>
+    </section>
+
+    <!-- PASSOS -->
+    <section id="passos">
+      <div class="steps-head">
+        <span class="pill">Passo a passo</span>
+        <h2 style="margin-top:10px">Siga na <span class="hl">ordem</span>.</h2>
+        <p class="lead-text">Anote o que vale para a sua empresa e marque cada passo como concluído.</p>
+      </div>
+      <div class="steps" id="steps"></div>
+    </section>
+
+    <!-- PLANO FINAL -->
+    <section class="card-blue final">
+      <div class="tiles" aria-hidden="true"><i></i><i class="g"></i><i></i><i></i></div>
+      <span class="pill pill-dark">Seu plano</span>
+      <h2>Tudo pronto para ativar o agente, <span class="hl-green" data-bind="nome"></span>.</h2>
+      <p class="sub">Guarde o resumo abaixo com as escolhas que você fez neste guia.</p>
+      <div class="final-chips">
+        <span class="chip" id="chipEmpresa"></span>
+        <span class="chip" id="chipLocal"></span>
+        <span class="chip hidden" id="chipLink">Catálogo/site informado</span>
+      </div>
+      <div class="final-box" id="finalBox"></div>
+      <button class="btn btn-green" id="copyPlan" type="button" style="margin-top:14px"><svg width="16" height="16"><use href="#i-copy"/></svg> Copiar meu plano</button>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand" aria-label="Bold Workspace">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="brand-name">bold <span>workspace</span></span>
+    </span>
+    <p class="note">Revise preços, prazos e disponibilidade antes de publicar qualquer resposta do agente. O Meta Business Agent é um recurso da Meta liberado de forma gradual; menus e nomes podem mudar.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =========================================================
+   CONFIGURAÇÃO — preencha antes de publicar no site
+   ========================================================= */
+const CONFIG = {
+  // Salesforce Web-to-Lead: cole o OID da org (Setup > Web-to-Lead).
+  // Vazio = o guia libera normalmente, mas o lead NÃO é enviado ao Salesforce.
+  salesforceOid: '',
+  leadSource: 'Guia Meta Business Agent',
+  // Opcional: IDs de campos personalizados do Lead para UTMs (ex.: '00N5f00000XXXXX').
+  // Se ficarem vazios, as UTMs vão no campo Descrição do lead.
+  utmFieldIds: { utm_source: '', utm_medium: '', utm_campaign: '', utm_content: '', utm_term: '' },
+  // Opcional: webhook (Make, Zapier, n8n) que também recebe o lead em JSON.
+  webhookUrl: '',
+  privacyUrl: '', // link da política de privacidade
+  // Opcional: IDs de campos personalizados do Lead para faixa, frente e newsletter.
+  // Se ficarem vazios, tudo vai no campo Descrição do lead.
+  extraFieldIds: { faixa: '', frente: '', newsletter: '' },
+  // Destinos dos botões do resultado (coloque links com UTM).
+  demoUrl: '',     // faixa B: agenda de demonstração do Workspace (Gabi)
+  projetoUrl: ''   // faixa C: agenda de conversa com especialista (Delta/Eduardo)
+};
+
+/* ---------------- perguntas de qualificação ----------------
+   Regras (validar com Gabi e Eduardo antes de publicar):
+   A = MEI, ou "só eu" atendendo com até 20 conversas/dia  -> guia + newsletter, sem abordagem
+   C = precisa consultar sistemas OU quer que construam     -> conversa com especialista (Delta)
+   B = demais casos acima de MEI                            -> demonstração do Agents (Workspace)
+------------------------------------------------------------ */
+const QUIZ = [
+  {id:'porte', q:'Qual é o porte da empresa?', help:'Pelo enquadramento do CNPJ.', two:true,
+   opts:[['mei','MEI'],['me','Microempresa (ME)'],['epp','Empresa de pequeno porte (EPP)'],['media','Média ou grande']]},
+  {id:'pessoas', q:'Quantas pessoas atendem ou vendem pelo WhatsApp?', two:true,
+   opts:[['1','Só eu'],['2-5','2 a 5'],['6-15','6 a 15'],['16+','Mais de 15']]},
+  {id:'conversas', q:'Quantas conversas chegam por dia, em média?',
+   opts:[['ate20','Até 20'],['21-100','21 a 100'],['100+','Mais de 100']]},
+  {id:'uso', q:'Como vocês usam o WhatsApp hoje?',
+   opts:[['app','Aplicativo WhatsApp Business'],['api','Plataforma ou API de atendimento'],['nao','Ainda não usamos para atender']]},
+  {id:'precisa', q:'O que o agente precisaria fazer?', help:'Escolha o mais importante.',
+   opts:[['duvidas','Responder dúvidas frequentes'],['qualificar','Qualificar e passar para um vendedor'],['sistemas','Consultar sistemas (pedidos, estoque, agenda, CRM)']]},
+  {id:'como', q:'Como vocês preferem resolver?',
+   opts:[['montar','Montar e ajustar com o nosso time'],['construam','Que alguém construa e integre para nós'],['naosei','Ainda não sei']]},
+  {id:'cargo', q:'Qual é o seu cargo?', two:true,
+   opts:[['dono','Dono(a) ou sócio(a)'],['gestor','Gestor(a) ou coordenador(a)'],['analista','Analista ou atendente'],['outro','Outro']]}
+];
+function classify(a){
+  if(a.porte==='mei' || (a.pessoas==='1' && a.conversas==='ate20')) return 'A';
+  if(a.precisa==='sistemas' || a.como==='construam') return 'C';
+  return 'B';
+}
+const FRENTE = {A:'Nutrição', B:'Workspace', C:'Delta'};
+function answerLabel(qid, val){ const q=QUIZ.find(x=>x.id===qid); const o=q&&q.opts.find(x=>x[0]===val); return o?o[1]:''; }
+
+/* ---------------- dados do guia ---------------- */
+const SEGMENTOS = ['Serviços','Loja/Varejo','Beleza/Estética','Saúde','Alimentação','Infoproduto','Outro'];
+const TONS = ['Profissional e direto','Acolhedor','Divertido','Sofisticado'];
+const MODOS = ['Todas as novas conversas','Exceto contatos','Só de anúncios','Pausada mas aprendendo'];
+const PREREQ = ['WhatsApp Business atualizado na versão mais recente','Número comercial ativo e verificado','Catálogo ou lista de produtos/serviços pronta','Página do Facebook conectada, se você tiver uma'];
+const TESTES = ['“Olá! Vocês estão abertos agora?”','“Quanto custa o serviço/produto principal?”','“Como faço para agendar/comprar?”','“Vocês atendem na minha região?”','“Quero falar com uma pessoa, por favor.”'];
+const RECO = {
+  'Serviços':'Comece com “Todas as novas conversas” para qualificar e agendar, mas deixe clara a rota para falar com uma pessoa.',
+  'Loja/Varejo':'“Todas as novas conversas” funciona bem para preço, disponibilidade e link do catálogo.',
+  'Beleza/Estética':'Use “Todas as novas conversas” para agendamento e oriente o agente a confirmar profissional, serviço e horário.',
+  'Saúde':'Prefira “Exceto contatos” ou “Pausada mas aprendendo” no início. Evite diagnósticos e encaminhe casos sensíveis para atendimento humano.',
+  'Alimentação':'“Todas as novas conversas” ajuda com cardápio, pedido e horário. Mantenha o cardápio sempre atualizado.',
+  'Infoproduto':'“Só de anúncios” é um bom começo para qualificar quem veio da campanha antes de ampliar.',
+  'Outro':'Comece com “Pausada mas aprendendo” por 2 a 3 dias, revise as sugestões e depois amplie.'
+};
+const STEPS = [
+  {n:0,tag:'Preparação',title:'Antes de começar',desc:'Deixe a base pronta para o agente não aprender com informação incompleta.',tip:'Não pule a base. Um catálogo desatualizado vira resposta errada.'},
+  {n:1,tag:'Descoberta',title:'Verificar disponibilidade',desc:'Confirme se o recurso já apareceu para o seu número comercial.',tip:'Se ainda não foi liberado, aproveite para deixar o catálogo impecável.'},
+  {n:2,tag:'Ativação',title:'Ativar o agente',desc:'Aceite os termos, autentique e conecte o agente à conta.',tip:'Faça a ativação com o celular por perto para a biometria e o QR code.'},
+  {n:3,tag:'Treino',title:'Ensinar sobre a sua empresa',desc:'Use os textos gerados com a sua personalização, prontos para colar.',tip:'Texto bom é texto verdadeiro. Revise preço, prazo e cobertura.'},
+  {n:4,tag:'Regras',title:'Configurar respostas',desc:'Escolha quando o agente responde e quando ele apenas observa.',tip:null},
+  {n:5,tag:'Teste',title:'Testar como cliente',desc:'Simule a jornada real antes de liberar para todo mundo.',tip:'Teste com o olhar do cliente, não com o de quem já conhece a empresa.'},
+  {n:6,tag:'Controle',title:'Ativar, pausar e retomar',desc:'Saiba assumir a conversa e reativar o agente depois.',tip:'O cliente nunca deve sentir que ficou sem resposta.'},
+  {n:7,tag:'Evolução',title:'Rotina semanal',desc:'Revise, corrija e mantenha o agente atualizado.',tip:'Pequenas correções semanais valem mais do que uma grande revisão por ano.'}
+];
+
+/* ---------------- estado (salvo no navegador) ---------------- */
+const KEY = 'bw_guia_meta_agent_v1';
+const defaultState = () => ({
+  unlocked:false,
+  lead:{nome:'',sobrenome:'',email:'',whatsapp:'',empresa:''},
+  perso:{empresa:'Sua empresa',segmento:'Serviços',produtos:'Atendimento personalizado, agendamento e suporte no WhatsApp.',horario:'Segunda a sexta, das 9h às 18h',cidade:'Sua cidade/UF',link:'',tom:'Profissional e direto'},
+  notes:{},done:{},prereq:[false,false,false,false],tests:[false,false,false,false,false],
+  mode:'Todas as novas conversas', utm:{},
+  quiz:{step:0, answers:{}, faixa:null}
+});
+let S = load();
+function load(){
+  try{ const raw = localStorage.getItem(KEY); if(raw){ return Object.assign(defaultState(), JSON.parse(raw)); } }catch(e){}
+  return defaultState();
+}
+let saveTimer;
+function save(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(()=>{ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }, 250);
+}
+
+/* ---------------- UTM / origem (first touch) ---------------- */
+(function captureUtm(){
+  try{
+    const q = new URLSearchParams(location.search);
+    const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    const found = {}; keys.forEach(k=>{ if(q.get(k)) found[k]=q.get(k); });
+    if(Object.keys(found).length && !Object.keys(S.utm||{}).length){ S.utm = found; }
+    if(!S.utm.referrer && document.referrer) S.utm.referrer = document.referrer;
+    if(!S.utm.landing) S.utm.landing = location.href.split('#')[0];
+    save();
+  }catch(e){}
+})();
+
+/* ---------------- utilitários ---------------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function maskPhone(v){
+  const d = v.replace(/\D/g,'').slice(0,11);
+  if(d.length<=2) return d?`(${d}`:'';
+  if(d.length<=7) return `(${d.slice(0,2)}) ${d.slice(2)}`;
+  return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+}
+let toastT;
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2200); }
+async function copyText(text){
+  try{ await navigator.clipboard.writeText(text); toast('Copiado!'); return; }catch(e){}
+  try{
+    const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); const ok=document.execCommand('copy'); ta.remove();
+    toast(ok?'Copiado!':'Selecione o texto e copie manualmente.');
+  }catch(e){ toast('Selecione o texto e copie manualmente.'); }
+}
+
+/* ---------------- textos gerados ---------------- */
+function generated(){
+  const p = S.perso, link = p.link || '[informe aqui o link do catálogo/site]';
+  return {
+    descricao:`${p.empresa} é uma empresa de ${p.segmento.toLowerCase()} em ${p.cidade}. Atendemos ${p.horario.charAt(0).toLowerCase()+p.horario.slice(1)}. Nossos principais produtos/serviços são: ${p.produtos} Nosso atendimento é ${p.tom.toLowerCase()} e nosso objetivo é responder com clareza, acolher o cliente e facilitar a próxima ação, como agendar, pedir orçamento ou comprar.`,
+    faq:`PERGUNTAS FREQUENTES · ${p.empresa}\n\n1) Qual é o horário de atendimento?\n${p.horario}, em ${p.cidade}.\n\n2) O que vocês oferecem?\n${p.produtos}\n\n3) Como faço para agendar ou comprar?\nIndique o passo mais simples e o link: ${link}.\n\n4) Vocês atendem na minha região?\nConfirme a cobertura em ${p.cidade} e pergunte o bairro/cidade do cliente antes de prometer entrega ou atendimento.\n\n5) Posso falar com uma pessoa?\nSim. Ofereça a transferência e registre o motivo do contato.`,
+    regras:`SAUDAÇÃO + REGRAS · ${p.empresa}\n\nOlá! Aqui é a ${p.empresa}. Que bom falar com você! Como posso ajudar hoje?\n\nRegras do agente:\n• Use tom ${p.tom.toLowerCase()}, com respostas curtas e claras.\n• Use apenas as informações oficiais: ${p.produtos}\n• Horário: ${p.horario} · Local: ${p.cidade}.\n• Não invente preço, prazo, disponibilidade ou promoção.\n• Não dê diagnóstico, garantia ou promessa fora do catálogo.\n• Não pressione a compra nem compartilhe dados internos.\n• Se não souber, diga que vai confirmar e ofereça falar com uma pessoa.`
+  };
+}
+
+/* ---------------- render dos passos ---------------- */
+function stepTodo(n){
+  const p = S.perso;
+  if(n===0) return PREREQ.map((t,i)=>`<label class="opt"><input type="checkbox" data-prereq="${i}" ${S.prereq[i]?'checked':''}>${esc(t)}</label>`).join('') + `<p class="note" style="margin-top:10px" id="prereqCount"></p>`;
+  if(n===1) return `<p>No WhatsApp Business, vá em <strong>Ferramentas → Agente de IA</strong>. Se a opção não aparecer, entre na lista de espera e aguarde.</p><p class="warn">O recurso é liberado gradualmente, apenas para empresas selecionadas em alguns países.</p>`;
+  if(n===2) return `<p>Em <strong>Ferramentas → Agente de IA → Continuar</strong>, leia e aceite os termos e autentique com biometria. Se começar pelo computador, escaneie com o celular o QR code exibido.</p>`;
+  if(n===3) return `<p>Use os três textos gerados abaixo. Cole um por vez, revise cada frase e só avance quando as informações estiverem corretas para <strong data-bind="empresa">${esc(p.empresa)}</strong>.</p>`;
+  if(n===4) return MODOS.map(m=>`<label class="opt ${S.mode===m?'sel':''}"><input type="radio" name="mode" value="${esc(m)}" ${S.mode===m?'checked':''}>${esc(m)}</label>`).join('');
+  if(n===5) return TESTES.map((t,i)=>`<label class="opt"><input type="checkbox" data-test="${i}" ${S.tests[i]?'checked':''}>${esc(t)}</label>`).join('');
+  if(n===6) return `<p>Para assumir uma conversa, pause o agente naquele contato. Para retomar, reative. Depois de 7 dias de inatividade, o agente pode reiniciar a resposta: confirme o contexto antes de continuar.</p>`;
+  if(n===7) return `<p>Toda semana: revise as conversas, corrija respostas erradas e atualize catálogo, preços, horários e perguntas frequentes de <strong data-bind="empresa">${esc(p.empresa)}</strong>.</p>`;
+}
+function renderSteps(){
+  const g = generated();
+  $('#steps').innerHTML = STEPS.map(s=>{
+    const k=String(s.n), done=!!S.done[k];
+    const tip = s.tip || RECO[S.perso.segmento] || RECO['Outro'];
+    let extra='';
+    if(s.n===3){
+      extra = `<div class="texts">${[['(a) Descrição da empresa','descricao'],['(b) Perguntas frequentes','faq'],['(c) Saudação + regras','regras']].map(([t,key])=>`
+        <div class="tbox"><div class="tbox-h"><b>${t}</b><button class="btn btn-ghost copy" type="button" data-copy="${key}"><svg width="14" height="14"><use href="#i-copy"/></svg> Copiar</button></div>
+        <textarea readonly data-gen="${key}">${esc(g[key])}</textarea></div>`).join('')}</div>`;
+    }
+    if(s.n===4){
+      extra = `<p class="reco"><strong>Recomendação para ${esc(S.perso.segmento)}:</strong> ${esc(RECO[S.perso.segmento]||RECO['Outro'])}<br><strong>Sua escolha:</strong> <span id="modeLabel">${esc(S.mode)}</span></p>`;
+    }
+    return `<article class="card step ${done?'done':''}" data-step="${k}">
+      <div class="step-top">
+        <div class="step-id"><span class="num">${s.n}</span><div><span class="pill">${s.tag}</span><h3>${s.title}</h3><p class="desc">${s.desc}</p></div></div>
+        <label class="done-toggle"><input type="checkbox" data-done="${k}" ${done?'checked':''}> ${done?'Concluído':'Marcar como concluído'}</label>
+      </div>
+      <div class="step-body">
+        <div class="todo"><p class="todo-h" style="margin:0"><svg><use href="#i-list"/></svg> O que fazer</p>${stepTodo(s.n)}</div>
+        <div>
+          <label class="f"><span>Minha anotação</span><textarea class="input" rows="4" data-note="${k}" placeholder="Escreva aqui o que vale para a sua empresa…">${esc(S.notes[k]||'')}</textarea></label>
+          <div class="tip"><svg><use href="#i-idea"/></svg><span><strong>Dica:</strong> ${esc(tip)}</span></div>
+        </div>
+      </div>
+      ${extra}
+    </article>`;
+  }).join('');
+  updatePrereqCount();
+}
+function updatePrereqCount(){ const el=$('#prereqCount'); if(el) el.textContent = `${S.prereq.filter(Boolean).length} de 4 pré-requisitos prontos.`; }
+
+/* ---------------- render geral ---------------- */
+function renderBinds(){
+  document.querySelectorAll('[data-bind="nome"]').forEach(e=>e.textContent=S.lead.nome);
+  document.querySelectorAll('[data-bind="empresa"]').forEach(e=>e.textContent=S.perso.empresa);
+}
+function renderSummary(){
+  const g=generated();
+  $('#summaryText').textContent = g.descricao + (S.perso.link?` Catálogo/site: ${S.perso.link}.`:'');
+}
+function renderProgress(){
+  const n = STEPS.filter(s=>S.done[String(s.n)]).length, pct=Math.round(n/STEPS.length*100);
+  $('#progressText').textContent = `${n} de ${STEPS.length} passos concluídos · ${pct}%`;
+  $('#progressFill').style.width = pct+'%';
+  renderFinal(pct);
+}
+function planText(pct){
+  const p=S.perso, l=S.lead;
+  const testes = S.tests.filter(Boolean).length;
+  return `Plano de ${l.nome} ${l.sobrenome}
+Empresa: ${p.empresa} (${p.segmento})
+Local e horário: ${p.cidade} · ${p.horario}
+Modo de resposta escolhido: ${S.mode}
+Pré-requisitos prontos: ${S.prereq.filter(Boolean).length} de 4
+Testes feitos: ${testes} de ${TESTES.length}
+Progresso no guia: ${pct}%`;
+}
+function renderFinal(pct){
+  if(pct===undefined){ pct=Math.round(STEPS.filter(s=>S.done[String(s.n)]).length/STEPS.length*100); }
+  $('#chipEmpresa').textContent = `${S.perso.empresa} · ${S.perso.segmento}`;
+  $('#chipLocal').textContent = `${S.perso.cidade} · ${S.perso.horario}`;
+  $('#chipLink').classList.toggle('hidden', !S.perso.link);
+  $('#finalBox').textContent = planText(pct);
+}
+function fillPersoForm(){
+  document.querySelectorAll('[data-p]').forEach(el=>{
+    const k=el.dataset.p;
+    if(el.tagName==='SELECT' && !el.options.length){
+      (k==='segmento'?SEGMENTOS:TONS).forEach(o=>{ const op=document.createElement('option'); op.textContent=o; el.appendChild(op); });
+    }
+    el.value = S.perso[k]||'';
+  });
+}
+function showUnlocked(){
+  $('#gateForm').classList.add('hidden');
+  $('#gateQuiz').classList.add('hidden');
+  renderResult();
+  $('#gateDone').classList.remove('hidden');
+  $('#unlocked').classList.remove('hidden');
+  $('#topCta').textContent='Ir para os passos'; $('#topCta').setAttribute('href','#passos');
+  fillPersoForm(); renderBinds(); renderSummary(); renderSteps(); renderProgress();
+}
+
+/* ---------------- envio do lead ---------------- */
+function sendToSalesforce(){
+  if(!CONFIG.salesforceOid) return;
+  try{
+    let frame=document.getElementById('sfFrame');
+    if(!frame){ frame=document.createElement('iframe'); frame.name='sfFrame'; frame.id='sfFrame'; frame.style.display='none'; document.body.appendChild(frame); }
+    const f=document.createElement('form');
+    f.method='POST'; f.target='sfFrame'; f.action='https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'; f.style.display='none';
+    const utmTxt = Object.entries(S.utm||{}).map(([k,v])=>`${k}: ${v}`).join('\n');
+    const faixa = S.quiz.faixa || 'Incompleto';
+    const respostas = QUIZ.map(q=>`${q.q} ${answerLabel(q.id, S.quiz.answers[q.id])||'-'}`).join('\n');
+    const fields = {
+      oid:CONFIG.salesforceOid, retURL:location.href.split('#')[0],
+      first_name:S.lead.nome, last_name:S.lead.sobrenome, email:S.lead.email, mobile:S.lead.whatsapp,
+      company:S.lead.empresa, lead_source:CONFIG.leadSource,
+      description:`Origem: ${CONFIG.leadSource}\nFaixa: ${faixa} · Frente: ${FRENTE[faixa]||'-'}\nNewsletter: ${S.lead.newsletter==='sim'?'sim':'não'}\n\n${respostas}\n\n${utmTxt}`
+    };
+    Object.entries(CONFIG.utmFieldIds||{}).forEach(([k,id])=>{ if(id && S.utm[k]) fields[id]=S.utm[k]; });
+    const x = CONFIG.extraFieldIds||{};
+    if(x.faixa) fields[x.faixa]=faixa;
+    if(x.frente) fields[x.frente]=FRENTE[faixa]||'';
+    if(x.newsletter) fields[x.newsletter]=S.lead.newsletter==='sim'?'1':'0';
+    Object.entries(fields).forEach(([k,v])=>{ const i=document.createElement('input'); i.type='hidden'; i.name=k; i.value=v||''; f.appendChild(i); });
+    document.body.appendChild(f); f.submit(); setTimeout(()=>f.remove(),3000);
+  }catch(e){ console.warn('Salesforce Web-to-Lead falhou', e); }
+}
+function sendToWebhook(){
+  if(!CONFIG.webhookUrl) return;
+  try{
+    fetch(CONFIG.webhookUrl,{method:'POST',mode:'no-cors',headers:{'content-type':'text/plain'},
+      body:JSON.stringify({lead:S.lead,faixa:S.quiz.faixa,frente:FRENTE[S.quiz.faixa],respostas:S.quiz.answers,origem:CONFIG.leadSource,utm:S.utm,enviadoEm:new Date().toISOString()})}).catch(()=>{});
+  }catch(e){}
+}
+
+/* ---------------- eventos ---------------- */
+const form = $('#leadForm');
+form.whatsapp.addEventListener('input', e=>{ e.target.value = maskPhone(e.target.value); });
+form.addEventListener('submit', e=>{
+  e.preventDefault();
+  const v = Object.fromEntries(new FormData(form).entries());
+  Object.keys(v).forEach(k=>v[k]=String(v[k]).trim());
+  const err=$('#formError');
+  if(!v.nome||!v.sobrenome||!v.empresa||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)||v.whatsapp.replace(/\D/g,'').length<10){
+    err.textContent='Confira os campos: nome, sobrenome, empresa, um e-mail válido e WhatsApp com DDD são obrigatórios.';
+    err.classList.remove('hidden'); return;
+  }
+  err.classList.add('hidden');
+  v.newsletter = form.newsletter.checked ? 'sim' : 'nao';
+  S.lead = v;
+  if(S.perso.empresa==='Sua empresa') S.perso.empresa = v.empresa;
+  save();
+  if(S.unlocked){ // só editou os dados
+    sendToSalesforce(); sendToWebhook();
+    showUnlocked(); toast('Dados atualizados.'); return;
+  }
+  S.quiz.step = 0; save();
+  showQuiz();
+});
+$('#editLead').addEventListener('click', ()=>{
+  Object.entries(S.lead).forEach(([k,v])=>{ if(form[k] && k!=='newsletter') form[k].value=v; });
+  form.newsletter.checked = S.lead.newsletter==='sim';
+  $('#gateForm').classList.remove('hidden'); $('#gateDone').classList.add('hidden');
+  $('#gateBtn').innerHTML='Salvar meus dados <svg width="18" height="18"><use href="#i-arrow"/></svg>';
+});
+
+/* ---------------- perguntas, uma por tela ---------------- */
+function showQuiz(){
+  $('#gateForm').classList.add('hidden'); $('#gateDone').classList.add('hidden');
+  $('#gateQuiz').classList.remove('hidden');
+  renderQuiz();
+  document.getElementById('liberar').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function renderQuiz(){
+  const i = Math.min(S.quiz.step||0, QUIZ.length-1), q = QUIZ[i], cur = S.quiz.answers[q.id];
+  $('#quizCount').textContent = `Pergunta ${i+1} de ${QUIZ.length}`;
+  $('#quizFill').style.width = `${(i/QUIZ.length)*100}%`;
+  $('#quizBack').disabled = i===0;
+  $('#quizPane').innerHTML = `<div class="quiz-pane"><p class="quiz-q">${esc(q.q)}</p>${q.help?`<p class="quiz-help">${esc(q.help)}</p>`:''}
+    <div class="quiz-opts ${q.two?'two':''}" role="radiogroup" aria-label="${esc(q.q)}">
+    ${q.opts.map((o,k)=>`<button type="button" class="quiz-opt ${cur===o[0]?'sel':''}" role="radio" aria-checked="${cur===o[0]}" data-val="${o[0]}"><span class="k">${String.fromCharCode(65+k)}</span>${esc(o[1])}</button>`).join('')}
+    </div></div>`;
+  const first = $('#quizPane .quiz-opt.sel') || $('#quizPane .quiz-opt');
+  if(first) first.focus({preventScroll:true});
+}
+$('#quizPane').addEventListener('click', e=>{
+  const b = e.target.closest('.quiz-opt'); if(!b) return;
+  const q = QUIZ[S.quiz.step];
+  S.quiz.answers[q.id] = b.dataset.val;
+  $('#quizPane').querySelectorAll('.quiz-opt').forEach(x=>{ x.classList.toggle('sel', x===b); x.setAttribute('aria-checked', x===b); });
+  save();
+  setTimeout(()=>{
+    if(S.quiz.step < QUIZ.length-1){ S.quiz.step++; save(); renderQuiz(); }
+    else finishQuiz();
+  }, 220);
+});
+$('#quizPane').addEventListener('keydown', e=>{
+  const n = parseInt(e.key,10), letter = e.key.length===1 ? e.key.toUpperCase().charCodeAt(0)-65 : -1;
+  const opts = [...$('#quizPane').querySelectorAll('.quiz-opt')];
+  const idx = (n>=1 && n<=opts.length) ? n-1 : (letter>=0 && letter<opts.length ? letter : -1);
+  if(idx>=0){ e.preventDefault(); opts[idx].click(); }
+});
+$('#quizBack').addEventListener('click', ()=>{ if(S.quiz.step>0){ S.quiz.step--; save(); renderQuiz(); } });
+
+function finishQuiz(){
+  $('#quizFill').style.width = '100%';
+  S.quiz.faixa = classify(S.quiz.answers);
+  S.unlocked = true; save();
+  sendToSalesforce(); sendToWebhook();
+  showUnlocked();
+  toast('Guia liberado!');
+  setTimeout(()=>document.getElementById('liberar').scrollIntoView({behavior:'smooth',block:'start'}),120);
+}
+
+function renderResult(){
+  const f = S.quiz.faixa || 'B', a = S.quiz.answers, nome = esc(S.lead.nome||'');
+  let html = '', actions = '';
+  const guiaBtn = `<a href="#passos" class="btn ${f==='A'?'btn-blue':'btn-ghost'}">Abrir meu guia <svg width="16" height="16"><use href="#i-arrow"/></svg></a>`;
+  if(f==='A'){
+    html = `<span class="result-badge result-a">Resultado · o gratuito dá conta</span>
+      <h2 class="section-title">${nome}, o agente gratuito da Meta deve resolver a sua operação.</h2>
+      <p class="lead-text">Com o volume e o time que você descreveu, o agente nativo do WhatsApp Business cobre bem as dúvidas frequentes. Siga o guia abaixo para configurar, testar e ativar.</p>
+      <ul class="result-list">
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>Comece pelo Passo 0: catálogo e informações atualizadas.</li>
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>Use os textos prontos do Passo 3 com os dados da sua empresa.</li>
+      </ul>`;
+    actions = guiaBtn;
+  } else if(f==='B'){
+    html = `<span class="result-badge result-b">Resultado · seu time já passou do gratuito</span>
+      <h2 class="section-title">${nome}, sua operação já pede mais que o agente gratuito.</h2>
+      <p class="lead-text">Com ${esc(answerLabel('pessoas',a.pessoas).toLowerCase())} pessoas atendendo e ${esc(answerLabel('conversas',a.conversas).toLowerCase())} conversas por dia, o agente nativo tende a esbarrar em limites: um número só, pouca divisão entre atendentes e nenhuma ligação com o restante da operação.</p>
+      <ul class="result-list">
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>O guia abaixo continua útil para entender o agente nativo.</li>
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>Se quiser ver um agente feito para times, o app Agents do Bold Workspace mostra como em uma demonstração rápida.</li>
+      </ul>`;
+    actions = (CONFIG.demoUrl ? `<a href="${esc(CONFIG.demoUrl)}" target="_blank" rel="noopener" class="btn btn-blue">Agendar uma demonstração <svg width="16" height="16"><use href="#i-arrow"/></svg></a>` : '') + guiaBtn;
+  } else {
+    html = `<span class="result-badge result-c">Resultado · agente integrado</span>
+      <h2 class="section-title">${nome}, o seu agente precisa conversar com os seus sistemas.</h2>
+      <p class="lead-text">Você indicou que o agente precisa ${a.precisa==='sistemas'?'consultar pedidos, estoque, agenda ou CRM':'ser construído e integrado para vocês'}. O agente nativo não faz isso: ele responde apenas com o que está no WhatsApp Business.</p>
+      <ul class="result-list">
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>O guia abaixo mostra o que o agente nativo já resolve.</li>
+        <li><span class="ck"><svg><use href="#i-check"/></svg></span>Para um agente ligado aos seus sistemas, vale uma conversa com um especialista em integração.</li>
+      </ul>`;
+    actions = (CONFIG.projetoUrl ? `<a href="${esc(CONFIG.projetoUrl)}" target="_blank" rel="noopener" class="btn btn-blue">Conversar com um especialista <svg width="16" height="16"><use href="#i-arrow"/></svg></a>` : '') + guiaBtn;
+  }
+  $('#resultBox').innerHTML = html;
+  $('#resultActions').innerHTML = actions;
+}
+$('#applyPerso').addEventListener('click', ()=>{
+  document.querySelectorAll('[data-p]').forEach(el=>{ S.perso[el.dataset.p] = el.value.trim(); });
+  if(!S.perso.empresa) S.perso.empresa = S.lead.empresa || 'Sua empresa';
+  save(); renderBinds(); renderSummary(); renderSteps(); renderFinal();
+  toast('Personalização aplicada.');
+});
+$('#steps').addEventListener('change', e=>{
+  const t=e.target;
+  if(t.dataset.done!==undefined){ S.done[t.dataset.done]=t.checked; const art=t.closest('.step'); art.classList.toggle('done',t.checked); t.parentElement.lastChild.textContent = t.checked?' Concluído':' Marcar como concluído'; renderProgress(); }
+  else if(t.dataset.prereq!==undefined){ S.prereq[+t.dataset.prereq]=t.checked; updatePrereqCount(); renderFinal(); }
+  else if(t.dataset.test!==undefined){ S.tests[+t.dataset.test]=t.checked; renderFinal(); }
+  else if(t.name==='mode'){ S.mode=t.value; document.querySelectorAll('input[name=mode]').forEach(r=>r.parentElement.classList.toggle('sel',r.checked)); $('#modeLabel').textContent=S.mode; renderFinal(); }
+  save();
+});
+$('#steps').addEventListener('input', e=>{ const t=e.target; if(t.dataset.note!==undefined){ S.notes[t.dataset.note]=t.value; save(); } });
+$('#steps').addEventListener('click', e=>{ const b=e.target.closest('[data-copy]'); if(b) copyText(generated()[b.dataset.copy]); });
+$('#copyPlan').addEventListener('click', ()=>copyText($('#finalBox').textContent));
+$('#privacyLink').addEventListener('click', e=>{ if(!CONFIG.privacyUrl){ e.preventDefault(); } else { e.currentTarget.href=CONFIG.privacyUrl; e.currentTarget.target='_blank'; e.currentTarget.rel='noopener'; } });
+if(CONFIG.privacyUrl){ $('#privacyLink').href=CONFIG.privacyUrl; $('#privacyLink').target='_blank'; $('#privacyLink').rel='noopener'; }
+
+/* ---------------- início ---------------- */
+if(!S.quiz || typeof S.quiz!=='object') S.quiz={step:0,answers:{},faixa:null};
+if(S.unlocked){ showUnlocked(); }
+else if(S.lead && S.lead.email){ showQuiz(); }
+</script>
+</body>
+</html>
